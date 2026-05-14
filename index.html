@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Traductor a Lengua de Señas Mexicana</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#translator" aria-label="Ir al traductor">
+        <span class="brand__icon" aria-hidden="true">LSM</span>
+        <span>
+          <strong>SeñaTranslate</strong>
+          <small>Lengua de Señas Mexicana</small>
+        </span>
+      </a>
+      <nav aria-label="Navegación principal">
+        <a href="#translator">Traducir</a>
+        <a href="#history">Historial</a>
+        <a href="#guide">Guía</a>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false">
+        <span aria-hidden="true" id="themeIcon">🌙</span>
+        <span id="themeLabel">Modo oscuro</span>
+      </button>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div>
+          <p class="eyebrow">Español · English → LSM</p>
+          <h1 id="hero-title">Traduce frases cotidianas a Lengua de Señas Mexicana.</h1>
+          <p>
+            Escribe lo que quieres decir y recibe una secuencia visual de señas LSM con
+            tarjetas tipo video, instrucciones de movimiento y deletreo manual cuando no haya
+            una seña registrada.
+          </p>
+        </div>
+        <div class="hero-card" aria-label="Resumen de funciones">
+          <span>🖐️</span>
+          <strong>Diccionario LSM básico</strong>
+          <small>Saludos, ayuda, cortesía, familia, escuela, lugares y emociones.</small>
+        </div>
+      </section>
+
+      <section class="translator-shell" id="translator" aria-label="Traductor">
+        <div class="language-row">
+          <div class="language-pill active">Detectar idioma</div>
+          <span aria-hidden="true">→</span>
+          <div class="language-pill">Lengua de Señas Mexicana</div>
+        </div>
+
+        <div class="translate-grid">
+          <article class="panel input-panel">
+            <div class="panel__header">
+              <h2>Texto</h2>
+              <select id="languageSelect" aria-label="Idioma de entrada">
+                <option value="auto">Detectar español o inglés</option>
+                <option value="es">Español</option>
+                <option value="en">English</option>
+              </select>
+            </div>
+            <textarea
+              id="sourceText"
+              maxlength="280"
+              placeholder="Ejemplo: Hola, buenos días. Necesito ayuda para ir al hospital."
+              aria-label="Texto a traducir"
+            ></textarea>
+            <div class="input-actions">
+              <span id="charCount">0 / 280</span>
+              <div>
+                <button class="secondary" id="clearButton" type="button">Limpiar</button>
+                <button class="primary" id="translateButton" type="button">Traducir a LSM</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel output-panel" aria-live="polite">
+            <div class="panel__header">
+              <h2>Señas LSM</h2>
+              <span class="detected" id="detectedLanguage">Listo para traducir</span>
+            </div>
+            <div class="empty-state" id="emptyState">
+              <span aria-hidden="true">👋</span>
+              <p>Tu traducción aparecerá aquí como tarjetas visuales de señas mexicanas.</p>
+            </div>
+            <div class="sign-sequence" id="signSequence"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="content-grid">
+        <article class="history-card" id="history">
+          <div class="section-title">
+            <div>
+              <p class="eyebrow">Últimas traducciones</p>
+              <h2>Historial</h2>
+            </div>
+            <button class="secondary" id="clearHistoryButton" type="button">Borrar historial</button>
+          </div>
+          <ol class="history-list" id="historyList"></ol>
+          <p class="empty-history" id="emptyHistory">Aún no hay traducciones guardadas.</p>
+        </article>
+
+        <aside class="guide-card" id="guide">
+          <p class="eyebrow">Nota importante</p>
+          <h2>Diseñado para LSM</h2>
+          <p>
+            La Lengua de Señas Mexicana tiene gramática y regionalismos propios. Esta demo
+            prioriza frases frecuentes y muestra deletreo manual cuando no reconoce una palabra.
+          </p>
+          <ul>
+            <li>Entrada aceptada: español e inglés.</li>
+            <li>Salida: tarjetas visuales con seña, movimiento y orden sugerido.</li>
+            <li>Historial local: máximo 10 traducciones en este navegador.</li>
+          </ul>
+        </aside>
+      </section>
+    </main>
+
+    <footer>
+      <p>Prototipo educativo. Para uso oficial, valida las señas con una persona intérprete LSM certificada.</p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
